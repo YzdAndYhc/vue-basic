@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>11VUe</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>当前N是{{n}}</h1>
+        <button @click="n++">点击n+</button>
+
+        <!-- <h2 v-show="false">显示n</h2> -->
+
+        <!-- <h2 v-if="n==1">显示if</h2>
+        <h2 v-else-if="n==2">显示else if</h2>
+        <h2 v-else>显示else</h2> -->
+
+        <template v-if="n == 1">
+            <h1>1</h1>
+            <h1>2</h1>
+            <h1>3</h1>
+        </template>
+    </div>
+   <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el:'#root',
+            data:{
+                name:'yzd',
+                n:0
+            }
+        })
+  </script>
+</body>
+</html>

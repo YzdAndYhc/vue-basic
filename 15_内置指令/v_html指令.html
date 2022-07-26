@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>11vue</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+      <h2 v-html="name"></h2>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        
+        new Vue({
+            el:'#root',
+            data:{
+                name:"<input type='text' value='你好！' ></h1>"
+            }
+        })
+    </script>
+</body>
+</html>

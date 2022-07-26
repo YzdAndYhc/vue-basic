@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>11vue</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+      <button @click="addTime">添加一个地址</button>
+      <h1>姓名：{{name}}</h1>
+      <h1>年龄：{{age}}</h1>
+      <h1>爱好：{{hobby.sport}}</h1>
+      <h1>程度：{{hobby.level}}</h1>
+      <h1 v-if="hobby.time">时间：{{hobby.time}}</h1>
+      <ul>
+        <li v-for="(f,index) in hobby.friends" ::key=index>
+          {{f.name}}--{{f.age}}
+        </li>
+      </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el:'#root',
+            data:{
+              name:'杨自东',
+              age:'21',
+              hobby:{
+                sport:'游泳',
+                level:"一般",
+                friends:[
+                  {name:'小明',age:'17'},
+                  {name:'小洪',age:'25'},
+                  {name:'小蓝',age:'42'},
+                ]
+              }
+            },
+            methods: {
+              addTime(){
+                // Vue.set(this.hobby,'time',"1h");
+                this.$set(this.hobby,'time',"1h")
+              }
+            },
+          })
+    </script>
+</body>
+</html>

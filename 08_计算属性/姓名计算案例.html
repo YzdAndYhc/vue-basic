@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue08</title>
+</head>
+<script type="text/javascript" src="../js/vue.js"></script>
+<body>
+    <div id="root">
+        姓:<input type="text" v-model="fristName"><br>
+        名:<input type="text" v-model="lastName"><br>
+        全名: {{fullName}}
+    </div>
+   <script>
+    Vue.config.productionTip = false;
+
+      new Vue({
+          el:'#root',
+          data:{
+            fristName:'张',
+            lastName:'三'
+          },
+          computed:{
+            //完整写法
+            /* 
+            fullName:{
+                get(){
+                    return this.fristName + "-" + this.lastName;
+                },
+                set(value){
+                    const arr = value.split('-');
+                    this.fristName = arr[0];
+                    this.lastName = arr[1];
+                }
+            }
+            */
+            //简写
+            fullName(){
+                return this.fristName + "-" + this.lastName;
+            }
+          }
+      })
+   </script>
+</body>
+</html>

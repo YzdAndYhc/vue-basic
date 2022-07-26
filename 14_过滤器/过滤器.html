@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>11vue</title>
+  <script src="../js/vue.js"></script>
+  <script src="../js/dayjs.min.js"></script>
+</head>
+<body>
+    <div id="root">
+      <h2>显示当前时间{{time}}</h2>
+      <!-- computed实现 -->
+      <h2>显示处理后的时间{{formatTime}}</h2>
+      <!-- methods实现 -->
+      <h2>显示处理后的时间{{getFormatTime()}}</h2>
+      <!-- 过滤器实现 -->
+      <h2>显示处理后的时间{{time | timeFormat()}}</h2>
+      <!-- 全局过滤器实现 -->
+      <h2>显示处理后的时间{{time | timeFormat() | timeSlice()}}</h2>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        // 全局过滤器
+        Vue.filter('timeSlice',function(value){
+           return value.slice(0,4)
+        })
+
+        new Vue({
+            el:'#root',
+            data:{
+              time:Date.now()
+            },
+            computed:{
+              formatTime(){
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+              }
+            },
+            methods: {
+              getFormatTime(){
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+              }
+            },
+            // 局部过滤器
+            filters:{
+              timeFormat(value){
+                return dayjs(value).format('YYYY-MM-DD HH:mm:ss')
+              }
+            }
+          })
+    </script>
+</body>
+</html>

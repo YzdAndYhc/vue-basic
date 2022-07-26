@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue07</title>
+  <style>
+    *{
+     margin: 20px;    
+    }
+    .demo1{
+        height: 50px;
+        background-color: aquamarine;
+    }
+    .box1{
+        padding: 5px;
+        background-color: salmon;
+    }
+    .box2{
+        background-color: blueviolet;
+    }
+    .list{
+        width: 200px;
+        height: 200px;
+        background-color: burlywood;
+        overflow: auto;
+    }
+    li{
+        height: 100px;
+    }
+  </style>
+</head>
+<script type="text/javascript" src="../js/vue.js"></script>
+<body>
+    <!-- 
+        1.prevent 不执行默认事件
+        2.stop 阻止事件冒泡
+        3.once 事件只触发一次
+        4.capture 使用事件的捕获模式
+        5.self 只有event.target是当前操作的元素时才触发事件 
+        6.
+     -->
+    <div id="root">
+        <h1>欢迎{{name}}</h1>
+        <!-- 阻止默认事件 -->
+        <a href="https://wwww.baidu.com" @click.prevent="turnOn">点击百度</a>
+        
+        <!-- 阻止事件冒泡 -->
+        <div class="demo1" @click="showInfo">
+            <button @click.stop="showInfo">点击我</button>
+        </div>
+
+        <!-- 事件只触发一次 -->
+        <button @click.once="showInfo">点击我</button>
+
+        <!-- 使用事件的捕获模式 -->
+        <div class="box1" @click.capture="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>
+
+        <!-- 只有event.target是当前操作的元素时才触发事件 -->
+        <div class="demo1" @click.self="showInfo">
+            <button @click="showInfo">点击我</button>
+        </div>
+
+        <!-- scroll滚动条 wheel鼠标滚轮 -->
+        <ul @wheel.passive="demo" class="list">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+        new Vue({
+            el:'#root',
+            data:{
+                name:"yzd"
+            },
+            methods:{
+                turnOn(){
+                console.log("test");
+                },
+                showInfo(e){
+                    // alert("hello");
+                    console.log(e.target);
+                },
+                showMsg(number){
+                    console.log(number);
+                },
+                demo(){
+                    for(i=0;i<1000;i++){
+                        console.log("#");
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

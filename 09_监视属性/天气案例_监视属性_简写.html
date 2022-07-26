@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue09</title>
+  <script text="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>今天天气很{{info}}</h1>
+        <button @click="changeWeather">Click Me</button>
+        
+    </div>
+   <script>
+    Vue.config.productionTip = false;
+     const vm = new Vue({
+          el:'#root',
+          data:{
+              isHot:true,
+          },
+          computed:{
+            info(){
+                return this.isHot ? '凉爽':'炎热'
+            }
+          },
+          methods:{
+            changeWeather(){
+                this.isHot = !this.isHot;
+            }
+          },
+          watch:{
+            //正常写法
+            /*
+            isHot:{
+                // immediate:true,//初始化时调用
+                // deep:true,
+                handler(newValue,oldValue){
+                    console.log("hot 被修改了"+newValue+"-"+oldValue);
+                }
+            },
+            */
+           //简写
+           /*
+           isHot(newValue,oldValue){
+              console.log("hot 被修改了"+newValue+"-"+oldValue);
+           }
+            */
+          },
+      });
+
+      //正常写法
+      /*  
+      vm.$watch('isHot',{
+        // immediate:true,//初始化时调用
+        // deep:true,
+        handler(newValue,oldValue){
+          console.log("hot 被修改了"+newValue+"-"+oldValue);
+        }
+      });
+      */
+      //简写
+      vm.$watch('isHot',function(newValue,oldValue){
+        console.log("hot 被修改了"+newValue+"-"+oldValue);
+      });
+   </script>
+</body>
+</html>

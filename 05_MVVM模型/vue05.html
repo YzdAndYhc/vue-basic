@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue05</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        1.M:模型（model）:data中的数据
+        2.V:视图（view）:模板代码
+        3.VM:视图模型（viewModel）:Vue实例
+        -->
+    <div id="root">
+        <h1>{{name}}</h1>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+
+
+        new Vue({
+            el:'#root',
+            data:{
+                name:'周星驰'
+            }
+        });
+    </script>
+</body>
+</html>

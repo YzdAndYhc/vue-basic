@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+      <h2 v-pre>n的值是{{n}}</h2>
+      <h2>n的值是{{n}}</h2>
+      <button @click="n++">N+1</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        
+        new Vue({
+            el:'#root',
+            data:{
+                n:1,
+            }
+        })
+    </script>
+</body>
+</html>
